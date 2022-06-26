@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  yandexrest:
+    build:
+      context: ../
+      dockerfile: docker/application/Dockerfile
+    container_name: yandexrest
+    ports:
+    - 80:80
+    depends_on:
+      - postgresdb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresdb:5432/admin
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=helloyandex
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    restart: always
+
+  postgresdb:
+    image: postgres
+    ports:
+    - 5432:5432
+    container_name: postgresdb
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=helloyandex
+    restart: always
