@@ -44,7 +44,6 @@ public class NodesController {
     )
     public ResponseEntity<Object> getNodesById(@ApiParam(value = "Идентификатор элемента", required = true) @PathVariable("id") UUID id) {
         return new ResponseEntity<>(nodesService.getNodesById(id), HttpStatus.OK);
-
     }
 
 }

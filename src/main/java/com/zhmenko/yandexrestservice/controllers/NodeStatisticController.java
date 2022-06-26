@@ -13,9 +13,9 @@ import com.zhmenko.yandexrestservice.model.ShopUnitStatisticResponse;
 
 import java.util.UUID;
 
+import com.zhmenko.yandexrestservice.model.exceptions.NotImplementedException;
 import io.swagger.annotations.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -63,9 +63,7 @@ public class NodeStatisticController {
                                                                           @RequestParam(value = "dateEnd", required = false)
                                                                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                                                                                   OffsetDateTime dateEnd) {
-
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
+        throw new NotImplementedException();
     }
 
 }

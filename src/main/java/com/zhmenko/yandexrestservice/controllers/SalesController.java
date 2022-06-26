@@ -8,9 +8,9 @@ package com.zhmenko.yandexrestservice.controllers;
 import com.zhmenko.yandexrestservice.model.Error;
 import java.time.OffsetDateTime;
 import com.zhmenko.yandexrestservice.model.ShopUnitStatisticResponse;
+import com.zhmenko.yandexrestservice.model.exceptions.NotImplementedException;
 import io.swagger.annotations.*;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +47,7 @@ public class SalesController {
                                                                   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                                                                           OffsetDateTime date) {
 
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+        throw new NotImplementedException();
     }
 
 }
