@@ -13,13 +13,10 @@ import java.util.UUID;
 import com.zhmenko.yandexrestservice.services.NodesService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-//@Validated
 @Api(value = "nodes", description = "the nodes API")
 @RestController
 @RequestMapping("/nodes")
@@ -46,10 +43,7 @@ public class NodesController {
             produces = {"application/json"}
     )
     public ResponseEntity<Object> getNodesById(@ApiParam(value = "Идентификатор элемента", required = true) @PathVariable("id") UUID id) {
-        ShopUnit shopUnit = nodesService.getNodesById(id);
-        if (shopUnit == null)
-            return new ResponseEntity<>(new Error(HttpStatus.NOT_FOUND.value(), "Категория/товар не найден."), HttpStatus.NOT_FOUND);
-        return new ResponseEntity<>(shopUnit, HttpStatus.OK);
+        return new ResponseEntity<>(nodesService.getNodesById(id), HttpStatus.OK);
 
     }
 

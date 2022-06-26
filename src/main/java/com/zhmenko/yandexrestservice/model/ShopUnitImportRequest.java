@@ -1,11 +1,9 @@
 package com.zhmenko.yandexrestservice.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.zhmenko.yandexrestservice.validators.dublicates.DublicatelessList;
 import io.swagger.annotations.ApiModelProperty;
 
-import java.time.Instant;
 import java.time.OffsetDateTime;
-import java.util.Calendar;
 import java.util.List;
 
 import lombok.EqualsAndHashCode;
@@ -23,6 +21,7 @@ import javax.validation.Valid;
 @NoArgsConstructor
 public class ShopUnitImportRequest   {
   @Valid
+  @DublicatelessList(field = "id")
   private List<ShopUnitImport> items;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)

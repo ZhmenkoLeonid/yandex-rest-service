@@ -6,14 +6,10 @@ import com.zhmenko.yandexrestservice.model.ShopUnitImport;
 import com.zhmenko.yandexrestservice.model.ShopUnitImportRequest;
 import com.zhmenko.yandexrestservice.model.ShopUnitType;
 import com.zhmenko.yandexrestservice.model.exceptions.BadRequestException;
-import com.zhmenko.yandexrestservice.model.exceptions.UnitNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.HttpClientErrorException;
 
-import java.time.Instant;
 import java.time.OffsetDateTime;
 import java.util.*;
 import java.util.function.Supplier;
@@ -25,18 +21,40 @@ public class ImportServiceImpl implements ImportService {
 
     @Override
     @Transactional
-    public boolean importItems(ShopUnitImportRequest shopUnitImportRequest) {
+    public void importItems(ShopUnitImportRequest shopUnitImportRequest) {
         List<ShopUnitImport> items = shopUnitImportRequest.getItems();
         OffsetDateTime updateDate = shopUnitImportRequest.getUpdateDate();
 
         Map<UUID, ShopUnit> itemMap = new HashMap<>();
         Set<ShopUnit> recalculateSet = new HashSet<>();
         for (ShopUnitImport item : items) {
-            ShopUnit shopUnit = new ShopUnit(item.getId(),
-                    item.getName(),
-                    updateDate,
-                    item.getType(),
-                    item.getPrice());
+            ShopUnit shopUnit = unitRepository.findById(item.getId()).orElse(null);
+            if (shopUnit == null) {
+                shopUnit = new ShopUnit(item.getId(),
+                        item.getName(),
+                        updateDate,
+                        item.getType(),
+                        item.getPrice());
+            } else {
+                shopUnit.setName(item.getName());
+                shopUnit.setPrice(item.getPrice());
+                shopUnit.setDate(updateDate);
+                // Если у unit'a был родитель, а в запросе его уже нет,
+                // то нужно пересчитать его стоимость (и родителей родителя) с учётом удаления unit'а,
+                if (item.getParentId() == null && shopUnit.getParent() != null ) {
+                    ShopUnit tempAncestor = shopUnit.getParent();
+                    // Удалить потомка из списка
+                    tempAncestor.getChildren().remove(shopUnit);
+                    // А также обновить дату изменения родителей
+                    tempAncestor.setDate(updateDate);
+                    while (tempAncestor.getParent() != null) {
+                        tempAncestor = tempAncestor.getParent();
+                        tempAncestor.setDate(updateDate);
+                    }
+                    recalculateSet.add(tempAncestor);
+                    shopUnit.setParent(null);
+                }
+            }
             itemMap.put(item.getId(), shopUnit);
         }
 
@@ -47,7 +65,7 @@ public class ImportServiceImpl implements ImportService {
                 // Если родителя нет во входных данных, ищём в бд
                 if (parentShopUnit == null) {
                     parentShopUnit = unitRepository.findById(parentId).orElseThrow((Supplier<RuntimeException>) () ->
-                            new BadRequestException("Невалидная схема документа или входные данные не верны."));
+                            new BadRequestException("Validation Failed"));
                     // Обновляем дату изменения родителя и родителей родителя
                     parentShopUnit.setDate(updateDate);
                     ShopUnit tempParent = parentShopUnit;
@@ -67,7 +85,7 @@ public class ImportServiceImpl implements ImportService {
                         recalculateSet.add(parentShopUnit);
                 }
                 if (parentShopUnit.getType() == ShopUnitType.OFFER)
-                    throw new BadRequestException("Невалидная схема документа или входные данные не верны.");
+                    throw new BadRequestException("Validation Failed");
 
                 parentShopUnit.addChildren(itemMap.get(item.getId()));
             }
@@ -77,6 +95,5 @@ public class ImportServiceImpl implements ImportService {
             shopUnit.recalculatePrice();
         }
         unitRepository.saveAll(itemMap.values());
-        return true;
     }
 }

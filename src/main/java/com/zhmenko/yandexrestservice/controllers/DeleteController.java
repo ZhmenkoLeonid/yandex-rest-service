@@ -9,23 +9,14 @@ import com.zhmenko.yandexrestservice.model.Error;
 
 import java.util.UUID;
 
+import com.zhmenko.yandexrestservice.model.exceptions.UnitNotFoundException;
 import com.zhmenko.yandexrestservice.services.DeleteService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.NativeWebRequest;
-import org.springframework.web.multipart.MultipartFile;
-import springfox.documentation.annotations.ApiIgnore;
-
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Validated
 @Api(value = "delete", description = "the delete API")
@@ -54,9 +45,7 @@ public class DeleteController {
             produces = {"application/json"}
     )
     public ResponseEntity<Object> deleteById(@ApiParam(value = "Идентификатор", required = true) @PathVariable("id") UUID id) {
-        if (!deleteService.deleteById(id))
-            return new ResponseEntity<>(new Error(HttpStatus.NOT_FOUND.value(), "Категория/товар не найден."), HttpStatus.NOT_FOUND);
-
+        if (!deleteService.deleteById(id)) throw new UnitNotFoundException();
         return new ResponseEntity<>("Удаление прошло успешно.", HttpStatus.OK);
     }
 

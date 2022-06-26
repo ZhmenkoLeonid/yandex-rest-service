@@ -6,26 +6,21 @@
 package com.zhmenko.yandexrestservice.controllers;
 
 import com.zhmenko.yandexrestservice.model.Error;
+
 import java.time.OffsetDateTime;
 
-import com.zhmenko.yandexrestservice.model.ShopUnit;
 import com.zhmenko.yandexrestservice.model.ShopUnitStatisticResponse;
+
 import java.util.UUID;
+
 import io.swagger.annotations.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.NativeWebRequest;
-import org.springframework.web.multipart.MultipartFile;
-import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
-import javax.validation.constraints.*;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Validated
 @Api(value = "node", description = "the node API")
@@ -34,25 +29,40 @@ import java.util.Optional;
 public class NodeStatisticController {
     /**
      * GET /node/{id}/statistic
-     * Получение статистики (истории обновлений) по товару/категории за заданный полуинтервал [from, to). Статистика по удаленным элементам недоступна.  - цена категории - это средняя цена всех её товаров, включая товары дочерних категорий.Если категория не содержит товаров цена равна null. При обновлении цены товара, средняя цена категории, которая содержит этот товар, тоже обновляется. - можно получить статистику за всё время. 
+     * Получение статистики (истории обновлений) по товару/категории за заданный полуинтервал [from, to). Статистика по удаленным элементам недоступна.  - цена категории - это средняя цена всех её товаров, включая товары дочерних категорий.Если категория не содержит товаров цена равна null. При обновлении цены товара, средняя цена категории, которая содержит этот товар, тоже обновляется. - можно получить статистику за всё время.
      *
-     * @param id UUID товара/категории для которой будет отображаться статистика (required)
+     * @param id        UUID товара/категории для которой будет отображаться статистика (required)
      * @param dateStart Дата и время начала интервала, для которого считается статистика. Дата должна обрабатываться согласно ISO 8601 (такой придерживается OpenAPI). Если дата не удовлетворяет данному формату, необходимо отвечать 400. (optional)
-     * @param dateEnd Дата и время конца интервала, для которого считается статистика. Дата должна обрабатываться согласно ISO 8601 (такой придерживается OpenAPI). Если дата не удовлетворяет данному формату, необходимо отвечать 400. (optional)
+     * @param dateEnd   Дата и время конца интервала, для которого считается статистика. Дата должна обрабатываться согласно ISO 8601 (такой придерживается OpenAPI). Если дата не удовлетворяет данному формату, необходимо отвечать 400. (optional)
      * @return Статистика по элементу. (status code 200)
-     *         or Некорректный формат запроса или некорректные даты интервала. (status code 400)
-     *         or Категория/товар не найден. (status code 404)
+     * or Некорректный формат запроса или некорректные даты интервала. (status code 400)
+     * or Категория/товар не найден. (status code 404)
      */
-    @ApiOperation(value = "", nickname = "nodeIdStatisticGet", notes = "Получение статистики (истории обновлений) по товару/категории за заданный полуинтервал [from, to). Статистика по удаленным элементам недоступна.  - цена категории - это средняя цена всех её товаров, включая товары дочерних категорий.Если категория не содержит товаров цена равна null. При обновлении цены товара, средняя цена категории, которая содержит этот товар, тоже обновляется. - можно получить статистику за всё время. ", response = ShopUnitStatisticResponse.class, tags={ "Дополнительные задачи", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Статистика по элементу.", response = ShopUnitStatisticResponse.class),
-        @ApiResponse(code = 400, message = "Некорректный формат запроса или некорректные даты интервала.", response = Error.class),
-        @ApiResponse(code = 404, message = "Категория/товар не найден.", response = Error.class) })
+    @ApiOperation(value = "", nickname = "nodeIdStatisticGet", notes = "Получение статистики (истории обновлений) по товару/категории за заданный полуинтервал [from, to). Статистика по удаленным элементам недоступна.  - цена категории - это средняя цена всех её товаров, включая товары дочерних категорий.Если категория не содержит товаров цена равна null. При обновлении цены товара, средняя цена категории, которая содержит этот товар, тоже обновляется. - можно получить статистику за всё время. ", response = ShopUnitStatisticResponse.class, tags = {"Дополнительные задачи",})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Статистика по элементу.", response = ShopUnitStatisticResponse.class),
+            @ApiResponse(code = 400, message = "Некорректный формат запроса или некорректные даты интервала.", response = Error.class),
+            @ApiResponse(code = 404, message = "Категория/товар не найден.", response = Error.class)})
     @GetMapping(
-        value = "/{id}/statistic",
-        produces = { "application/json" }
+            value = "/{id}/statistic",
+            produces = {"application/json"}
     )
-    public ResponseEntity<ShopUnitStatisticResponse> getNodeStatisticById(@ApiParam(value = "UUID товара/категории для которой будет отображаться статистика",required=true) @PathVariable("id") UUID id, @ApiParam(value = "Дата и время начала интервала, для которого считается статистика. Дата должна обрабатываться согласно ISO 8601 (такой придерживается OpenAPI). Если дата не удовлетворяет данному формату, необходимо отвечать 400.") @Valid @RequestParam(value = "dateStart", required = false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME) OffsetDateTime dateStart, @ApiParam(value = "Дата и время конца интервала, для которого считается статистика. Дата должна обрабатываться согласно ISO 8601 (такой придерживается OpenAPI). Если дата не удовлетворяет данному формату, необходимо отвечать 400.") @Valid @RequestParam(value = "dateEnd", required = false) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME) OffsetDateTime dateEnd) {
+    public ResponseEntity<ShopUnitStatisticResponse> getNodeStatisticById(@ApiParam(value = "UUID товара/категории для которой будет отображаться статистика", required = true)
+                                                                          @PathVariable("id") UUID id,
+                                                                          @ApiParam(value = "Дата и время начала интервала, для которого считается статистика. " +
+                                                                                  "Дата должна обрабатываться согласно ISO 8601 (такой придерживается OpenAPI). " +
+                                                                                  "Если дата не удовлетворяет данному формату, необходимо отвечать 400.")
+                                                                          @Valid
+                                                                          @RequestParam(value = "dateStart", required = false)
+                                                                          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+                                                                                  OffsetDateTime dateStart,
+                                                                          @ApiParam(value = "Дата и время конца интервала, для которого считается статистика. " +
+                                                                                  "Дата должна обрабатываться согласно ISO 8601 (такой придерживается OpenAPI). " +
+                                                                                  "Если дата не удовлетворяет данному формату, необходимо отвечать 400.")
+                                                                          @Valid
+                                                                          @RequestParam(value = "dateEnd", required = false)
+                                                                          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+                                                                                  OffsetDateTime dateEnd) {
 
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 

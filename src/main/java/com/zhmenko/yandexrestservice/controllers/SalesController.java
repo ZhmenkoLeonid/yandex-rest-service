@@ -9,16 +9,14 @@ import com.zhmenko.yandexrestservice.model.Error;
 import java.time.OffsetDateTime;
 import com.zhmenko.yandexrestservice.model.ShopUnitStatisticResponse;
 import io.swagger.annotations.*;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.NativeWebRequest;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
-import java.util.Optional;
 
 @Validated
 @Api(value = "sales", description = "the sales API")
@@ -41,10 +39,15 @@ public class SalesController {
         value = "",
         produces = { "application/json" }
     )
-    public ResponseEntity<ShopUnitStatisticResponse> getSales(@NotNull @ApiParam(value = "Дата и время запроса. Дата должна обрабатываться согласно ISO 8601 (такой придерживается OpenAPI). Если дата не удовлетворяет данному формату, необходимо отвечать 400", required = true) @Valid @RequestParam(value = "date", required = true) @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME) OffsetDateTime date) {
+    public ResponseEntity<ShopUnitStatisticResponse> getSales(@NotNull
+                                                                  @ApiParam(value = "Дата и время запроса. Дата должна обрабатываться согласно ISO 8601 (такой придерживается OpenAPI). " +
+                                                                          "Если дата не удовлетворяет данному формату, необходимо отвечать 400", required = true)
+                                                                  @Valid
+                                                                  @RequestParam(value = "date")
+                                                                  @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+                                                                          OffsetDateTime date) {
 
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
     }
 
 }

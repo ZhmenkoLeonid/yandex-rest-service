@@ -1,16 +1,13 @@
 package com.zhmenko.yandexrestservice.model;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.zhmenko.yandexrestservice.model.ShopUnitType;
-import io.swagger.annotations.ApiModel;
+import com.zhmenko.yandexrestservice.validators.id.IdValue;
+import com.zhmenko.yandexrestservice.validators.price.PriceValue;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-import org.openapitools.jackson.nullable.JsonNullable;
+
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -19,10 +16,13 @@ import javax.validation.constraints.*;
  */
 @EqualsAndHashCode
 @ToString
-public class ShopUnitImport   {
-
+@PriceValue
+@IdValue
+public class ShopUnitImport {
+  @NotNull
   private UUID id;
 
+  @NotNull
   private String name;
 
   private UUID parentId;
@@ -36,8 +36,7 @@ public class ShopUnitImport   {
    * Уникальный идентфикатор
    * @return id
   */
-  @ApiModelProperty(example = "3fa85f64-5717-4562-b3fc-2c963f66a333", required = true, value = "Уникальный идентфикатор")
-  @NotNull
+  @ApiModelProperty(example = "3fa85f64-5717-4562-b3fc-2c963f66a333", required = true, value = "Уникальный идентификатор")
   @Valid
   public UUID getId() {
     return id;
@@ -52,7 +51,6 @@ public class ShopUnitImport   {
    * @return name
   */
   @ApiModelProperty(required = true, value = "Имя элемента.")
-  @NotNull
   public String getName() {
     return name;
   }
@@ -65,7 +63,7 @@ public class ShopUnitImport   {
    * UUID родительской категории
    * @return parentId
   */
-  @ApiModelProperty(example = "3fa85f64-5717-4562-b3fc-2c963f66a333", value = "UUID родительской категории")
+  @ApiModelProperty(example = "3fa85f64-5717-4562-b3fc-2c963f66a331", value = "UUID родительской категории")
   @Valid
   public UUID getParentId() {
     return parentId;
@@ -74,7 +72,6 @@ public class ShopUnitImport   {
   public void setParentId(UUID parentId) {
     this.parentId = parentId;
   }
-
 
   /**
    * Get type
