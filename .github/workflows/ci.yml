@@ -22,5 +22,6 @@ jobs:
         with:
           username: ${{ secrets.LOGIN }}
           password: ${{ secrets.TOKEN }}
+          context: .
           push: true
           tags: ${{ secrets.LOGIN }}/docker_yandexrest:latest
