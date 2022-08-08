@@ -14,6 +14,6 @@ jobs:
         with:
           username: ${{ secrets.LOGIN }}
           password: ${{ secrets.PASSWORD }}
-          context: ./docker/application
+          context: .
           repository: zmenko1/docker_yandexrest
           tags: 0.0.1, latest
