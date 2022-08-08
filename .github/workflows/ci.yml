@@ -16,5 +16,4 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           context: ./docker/application
           repository: zmenko1/docker_yandexrest
-          target: rest-service
           tags: 0.0.1, latest
