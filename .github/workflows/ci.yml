@@ -24,4 +24,5 @@ jobs:
           password: ${{ secrets.TOKEN }}
           context: .
           push: true
-          tags: user/app:latest
+          repository: zmenko1/docker_yandexrest
+          tags: 0.0.1, latest
