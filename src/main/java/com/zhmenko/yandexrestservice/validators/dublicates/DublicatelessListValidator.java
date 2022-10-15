@@ -1,6 +1,6 @@
 package com.zhmenko.yandexrestservice.validators.dublicates;
 
-import com.zhmenko.yandexrestservice.model.ShopUnitImport;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnitImport;
 import org.springframework.beans.BeanWrapperImpl;
 
 import javax.validation.ConstraintValidator;
@@ -28,6 +28,6 @@ public class DublicatelessListValidator implements ConstraintValidator<Dublicate
                 .stream()
                 .filter(e -> e.getValue().size() > 1)
                 .map(Map.Entry::getKey)
-                .count() == 0;
+                .findAny().isEmpty();
     }
 }

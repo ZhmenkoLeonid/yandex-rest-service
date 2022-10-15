@@ -1,4 +1,4 @@
-package com.zhmenko.yandexrestservice.model;
+package com.zhmenko.yandexrestservice.model.shop_unit;
 
 import com.zhmenko.yandexrestservice.validators.dublicates.DublicatelessList;
 import io.swagger.annotations.ApiModelProperty;

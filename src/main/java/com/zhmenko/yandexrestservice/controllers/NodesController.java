@@ -6,7 +6,7 @@
 package com.zhmenko.yandexrestservice.controllers;
 
 import com.zhmenko.yandexrestservice.model.Error;
-import com.zhmenko.yandexrestservice.model.ShopUnit;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnit;
 
 import java.util.UUID;
 

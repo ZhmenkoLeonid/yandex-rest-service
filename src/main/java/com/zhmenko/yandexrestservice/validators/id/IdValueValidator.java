@@ -1,7 +1,7 @@
 package com.zhmenko.yandexrestservice.validators.id;
 
 import com.zhmenko.yandexrestservice.data.UnitRepository;
-import com.zhmenko.yandexrestservice.model.ShopUnit;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnit;
 import com.zhmenko.yandexrestservice.model.ShopUnitType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanWrapperImpl;
@@ -31,6 +31,7 @@ public class IdValueValidator implements ConstraintValidator<IdValue,Object> {
                 .getPropertyValue(shopUnitTypeField);
         UUID id = (UUID) new BeanWrapperImpl(value)
                 .getPropertyValue(idField);
+        if (id == null) return false;
 
         ShopUnit shopUnit = unitRepository.findById(id).orElse(null);
         return shopUnit == null || shopUnitType == shopUnit.getType();

@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IdValue {
-    String message() default "Изменение типа элемента с товара на категорию или с категории на товар не допускается";
+    String message() default "Изменение типа элемента с товара на категорию или наоборот не допускается";
 
     Class<?>[] groups() default {};
 

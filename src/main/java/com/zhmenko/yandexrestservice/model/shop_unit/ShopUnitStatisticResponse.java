@@ -1,6 +1,7 @@
-package com.zhmenko.yandexrestservice.model;
+package com.zhmenko.yandexrestservice.model.shop_unit;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -12,6 +13,7 @@ import javax.validation.Valid;
  */
 @EqualsAndHashCode
 @ToString
+@AllArgsConstructor
 public class ShopUnitStatisticResponse   {
   @Valid
   private List<ShopUnitStatisticUnit> items;

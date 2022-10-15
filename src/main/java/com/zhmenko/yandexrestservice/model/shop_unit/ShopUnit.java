@@ -1,7 +1,8 @@
-package com.zhmenko.yandexrestservice.model;
+package com.zhmenko.yandexrestservice.model.shop_unit;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.zhmenko.yandexrestservice.model.ShopUnitType;
 import com.zhmenko.yandexrestservice.serializer.ShopUnitSerializer;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -13,6 +14,9 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -26,8 +30,10 @@ import javax.validation.constraints.*;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "ShopUnit")
+@Table(name = "shop_unit")
 @JsonSerialize(using = ShopUnitSerializer.class)
+@Audited(withModifiedFlag = true)
+@EntityListeners(AuditingEntityListener.class)
 public class ShopUnit {
     @Id
     private UUID id;
@@ -42,9 +48,10 @@ public class ShopUnit {
 
     @ManyToOne
     @NotFound(action = NotFoundAction.IGNORE)
-    @JoinColumn(name = "parentId")
+    @JoinColumn(name = "parent_id")
     @ToString.Exclude
     @JsonProperty("parentId")
+    @EqualsAndHashCode.Exclude
     private ShopUnit parent;
 
     @Column(name = "type")
@@ -55,6 +62,7 @@ public class ShopUnit {
 
     @Valid
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
+    @NotAudited
     private List<ShopUnit> children;
 
     public ShopUnit(UUID id, String name, OffsetDateTime date, ShopUnitType type, Long price) {

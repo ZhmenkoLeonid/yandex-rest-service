@@ -6,7 +6,7 @@
 package com.zhmenko.yandexrestservice.controllers;
 
 import com.zhmenko.yandexrestservice.model.Error;
-import com.zhmenko.yandexrestservice.model.ShopUnitImportRequest;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnitImportRequest;
 import com.zhmenko.yandexrestservice.services.ImportService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;

@@ -1,11 +1,12 @@
-package com.zhmenko.yandexrestservice.services;
+package com.zhmenko.yandexrestservice.services.impl;
 
 import com.zhmenko.yandexrestservice.data.UnitRepository;
-import com.zhmenko.yandexrestservice.model.ShopUnit;
-import com.zhmenko.yandexrestservice.model.ShopUnitImport;
-import com.zhmenko.yandexrestservice.model.ShopUnitImportRequest;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnit;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnitImport;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnitImportRequest;
 import com.zhmenko.yandexrestservice.model.ShopUnitType;
 import com.zhmenko.yandexrestservice.model.exceptions.BadRequestException;
+import com.zhmenko.yandexrestservice.services.ImportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

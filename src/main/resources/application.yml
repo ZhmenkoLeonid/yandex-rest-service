@@ -1,15 +1,24 @@
 server:
   port: 80
 spring:
+  jpa:
+    properties:
+      org:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          ddl-auto: update
+          envers:
+              audit_table_suffix: _AUDIT
+              revision_field_name: REVISION_ID
+              revision_type_field_name: REVISION_TYPE
+
+
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres}
     driverClassName: org.postgresql.Driver
-    username: ${SPRING_DATASOURCE_USERNAME:postgres}
-    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        ddl-auto: update
+    username: ${SPRING_DATASOURCE_USERNAME:postgre}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgre}
+
   # swagger ui fix
   mvc:
     pathmatch:

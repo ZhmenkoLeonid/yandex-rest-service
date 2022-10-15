@@ -1,5 +1,7 @@
-package com.zhmenko.yandexrestservice.model;
+package com.zhmenko.yandexrestservice.model.shop_unit;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.zhmenko.yandexrestservice.model.ShopUnitType;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -22,13 +24,14 @@ public class ShopUnitStatisticUnit   {
 
   private String name;
 
-  private JsonNullable<UUID> parentId;
+  private UUID parentId;
 
   private ShopUnitType type;
 
-  private JsonNullable<Long> price;
+  private Long price;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
   private OffsetDateTime date;
 
   /**
@@ -66,11 +69,11 @@ public class ShopUnitStatisticUnit   {
   */
   @ApiModelProperty(example = "3fa85f64-5717-4562-b3fc-2c963f66a333", value = "UUID родительской категории")
   @Valid
-  public JsonNullable<UUID> getParentId() {
+  public UUID getParentId() {
     return parentId;
   }
 
-  public void setParentId(JsonNullable<UUID> parentId) {
+  public void setParentId(UUID parentId) {
     this.parentId = parentId;
   }
 
@@ -94,11 +97,11 @@ public class ShopUnitStatisticUnit   {
    * @return price
   */
   @ApiModelProperty(value = "Целое число, для категории - это средняя цена всех дочерних товаров(включая товары подкатегорий). Если цена является не целым числом, округляется в меньшую сторону до целого числа. Если категория не содержит товаров цена равна null.")
-  public JsonNullable<Long> getPrice() {
+  public Long getPrice() {
     return price;
   }
 
-  public void setPrice(JsonNullable<Long> price) {
+  public void setPrice(Long price) {
     this.price = price;
   }
 

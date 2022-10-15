@@ -1,9 +1,10 @@
 package com.zhmenko.yandexrestservice;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.zhmenko.yandexrestservice.model.*;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnitImport;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnitImportRequest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.text.MessageFormat;
 import java.time.OffsetDateTime;
@@ -29,25 +31,28 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 class ApplicationTests {
-    private final String baseApiUrl = "http://localhost";
-    private final String rootUUID = "40dcacd9-90a7-4bb7-b5b6-1832062d8145";
-    private final String categoryUUID = "98883e8f-0507-482f-bce2-2fb306cf6483";
-    private final String categoryUUID1 = "63610f21-1421-4079-99ab-2700b847f7e1";
-    private final String offerUUID = "dba28f59-a639-4b4c-b326-f69e93be94d4";
-    private final String offerUUID1 = "da58936d-7554-4e07-bb5e-d09b69f11952";
+    private static final String baseApiUrl = "http://localhost";
+
+    private File initDataFile = new File("init_data.json");
+    private static final String rootUUID = "40dcacd9-90a7-4bb7-b5b6-1832062d8145";
+    private static final String categoryUUID = "98883e8f-0507-482f-bce2-2fb306cf6483";
+    private static final String categoryUUID1 = "63610f21-1421-4079-99ab-2700b847f7e1";
+    private static final String offerUUID = "dba28f59-a639-4b4c-b326-f69e93be94d4";
+    private static final String offerUUID1 = "da58936d-7554-4e07-bb5e-d09b69f11952";
 
     private static ObjectMapper mapper;
     @Autowired
     private MockMvc mockMvc;
 
     @BeforeAll
-    static void init() {
+    static void init() throws Exception {
         mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
-    }
 
+
+    }
     @Test
-    void okImportTest() throws Exception {
+    void initData() throws Exception {
         ShopUnitImportRequest request = new ShopUnitImportRequest();
         List<ShopUnitImport> requestItems = new ArrayList<>();
         request.setUpdateDate(OffsetDateTime.of(2022, 6, 10, 10, 50, 20, 0, ZoneOffset.UTC));

@@ -1,5 +1,6 @@
-package com.zhmenko.yandexrestservice.model;
+package com.zhmenko.yandexrestservice.model.shop_unit;
 
+import com.zhmenko.yandexrestservice.model.ShopUnitType;
 import com.zhmenko.yandexrestservice.validators.id.IdValue;
 import com.zhmenko.yandexrestservice.validators.price.PriceValue;
 import io.swagger.annotations.ApiModelProperty;

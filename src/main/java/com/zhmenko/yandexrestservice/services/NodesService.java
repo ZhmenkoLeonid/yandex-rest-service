@@ -1,6 +1,6 @@
 package com.zhmenko.yandexrestservice.services;
 
-import com.zhmenko.yandexrestservice.model.ShopUnit;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnit;
 
 import java.util.UUID;
 

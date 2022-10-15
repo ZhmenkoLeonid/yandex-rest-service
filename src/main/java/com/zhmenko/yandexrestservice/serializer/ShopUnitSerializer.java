@@ -3,7 +3,7 @@ package com.zhmenko.yandexrestservice.serializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-import com.zhmenko.yandexrestservice.model.ShopUnit;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnit;
 import com.zhmenko.yandexrestservice.model.ShopUnitType;
 
 import java.io.IOException;

@@ -7,7 +7,7 @@ package com.zhmenko.yandexrestservice.controllers;
 
 import com.zhmenko.yandexrestservice.model.Error;
 import java.time.OffsetDateTime;
-import com.zhmenko.yandexrestservice.model.ShopUnitStatisticResponse;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnitStatisticResponse;
 import com.zhmenko.yandexrestservice.model.exceptions.NotImplementedException;
 import io.swagger.annotations.*;
 import org.springframework.format.annotation.DateTimeFormat;
