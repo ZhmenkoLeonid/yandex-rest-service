@@ -8,9 +8,11 @@ package com.zhmenko.yandexrestservice.controllers;
 import com.zhmenko.yandexrestservice.model.Error;
 import java.time.OffsetDateTime;
 import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnitStatisticResponse;
-import com.zhmenko.yandexrestservice.model.exceptions.NotImplementedException;
+import com.zhmenko.yandexrestservice.services.SalesService;
 import io.swagger.annotations.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +24,9 @@ import javax.validation.constraints.*;
 @Api(value = "sales", description = "the sales API")
 @RestController()
 @RequestMapping("/sales")
+@RequiredArgsConstructor
 public class SalesController {
+    private final SalesService salesService;
     /**
      * GET /sales
      * Получение списка **товаров**, цена которых была обновлена за последние 24 часа включительно [now() - 24h, now()] от времени переданном в запросе. Обновление цены не означает её изменение. Обновления цен удаленных товаров недоступны. При обновлении цены товара, средняя цена категории, которая содержит этот товар, тоже обновляется. 
@@ -46,8 +50,8 @@ public class SalesController {
                                                                   @RequestParam(value = "date")
                                                                   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                                                                           OffsetDateTime date) {
-
-        throw new NotImplementedException();
+        OffsetDateTime previousDay = date.minusDays(1);
+        return new ResponseEntity<>(salesService.findUpdatedUnitsBetweenDates(previousDay, date), HttpStatus.OK);
     }
 
 }

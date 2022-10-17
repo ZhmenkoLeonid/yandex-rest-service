@@ -7,18 +7,13 @@ package com.zhmenko.yandexrestservice.controllers;
 
 import com.zhmenko.yandexrestservice.data.UnitRepository;
 import com.zhmenko.yandexrestservice.model.Error;
-
-import java.time.OffsetDateTime;
-
-import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnitStatisticResponse;
-
-import java.util.UUID;
-
 import com.zhmenko.yandexrestservice.model.exceptions.BadRequestException;
 import com.zhmenko.yandexrestservice.model.exceptions.UnitNotFoundException;
+import com.zhmenko.yandexrestservice.model.shop_unit.ShopUnitStatisticResponse;
 import com.zhmenko.yandexrestservice.services.NodeStatisticService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,15 +21,19 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.OffsetDateTime;
+import java.util.UUID;
 
 @Validated
 @Api(value = "node", description = "the node API")
 @RestController
 @RequestMapping("/node")
 @RequiredArgsConstructor
+@Slf4j
 public class NodeStatisticController {
     private final UnitRepository unitRepository;
     private final NodeStatisticService nodeStatisticService;
+
     /**
      * GET /node/{id}/statistic
      * Получение статистики (истории обновлений) по товару/категории за заданный полуинтервал [from, to). Статистика по удаленным элементам недоступна.  - цена категории - это средняя цена всех её товаров, включая товары дочерних категорий.Если категория не содержит товаров цена равна null. При обновлении цены товара, средняя цена категории, которая содержит этот товар, тоже обновляется. - можно получить статистику за всё время.
@@ -63,18 +62,19 @@ public class NodeStatisticController {
                                                                           @Valid
                                                                           @RequestParam(value = "dateStart", required = false)
                                                                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-                                                                                  OffsetDateTime dateStart,
+                                                                          OffsetDateTime dateStart,
                                                                           @ApiParam(value = "Дата и время конца интервала, для которого считается статистика. " +
                                                                                   "Дата должна обрабатываться согласно ISO 8601 (такой придерживается OpenAPI). " +
                                                                                   "Если дата не удовлетворяет данному формату, необходимо отвечать 400.")
                                                                           @Valid
                                                                           @RequestParam(value = "dateEnd", required = false)
                                                                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-                                                                                  OffsetDateTime dateEnd) {
-        if (dateEnd.toEpochSecond() - dateStart.toEpochSecond() <= 0) throw new BadRequestException();
+                                                                          OffsetDateTime dateEnd) {
+        if (dateStart != null &&
+                dateEnd != null &&
+                (dateEnd.toEpochSecond() - dateStart.toEpochSecond() <= 0)) throw new BadRequestException();
         if (!unitRepository.existsById(id)) throw new UnitNotFoundException();
 
-        return new ResponseEntity<>(nodeStatisticService.findStatisticsById(id,dateStart,dateEnd), HttpStatus.OK);
+        return new ResponseEntity<>(nodeStatisticService.findStatisticsById(id, dateStart, dateEnd), HttpStatus.OK);
     }
-
 }
