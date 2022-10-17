@@ -12,7 +12,7 @@ public enum ShopUnitType {
   
   CATEGORY("CATEGORY");
 
-  private String value;
+  private final String value;
 
   ShopUnitType(String value) {
     this.value = value;

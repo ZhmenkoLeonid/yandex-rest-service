@@ -7,6 +7,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,9 @@ public class DublicatelessListValidator implements ConstraintValidator<Dublicate
     @Override
     public boolean isValid(List<ShopUnitImport> list, ConstraintValidatorContext constraintValidatorContext) {
         return list.stream()
-                .map(o -> new BeanWrapperImpl(o).getPropertyValue(field).toString())
+                .map(o -> new BeanWrapperImpl(o).getPropertyValue(field))
+                .filter(Objects::nonNull)
+                .map(Object::toString)
                 .collect(Collectors.groupingBy(Function.identity()))
                 .entrySet()
                 .stream()
