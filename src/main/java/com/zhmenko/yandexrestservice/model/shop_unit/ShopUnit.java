@@ -135,7 +135,7 @@ public class ShopUnit {
      *
      * @return type
      */
-    @ApiModelProperty(required = true, value = "")
+    @ApiModelProperty(required = true, example = "OFFER")
     @NotNull
     @Valid
     public ShopUnitType getType() {
@@ -151,7 +151,10 @@ public class ShopUnit {
      *
      * @return price
      */
-    @ApiModelProperty(value = "Целое число, для категории - это средняя цена всех дочерних товаров(включая товары подкатегорий). Если цена является не целым числом, округляется в меньшую сторону до целого числа. Если категория не содержит товаров цена равна null.")
+    @ApiModelProperty(value = "Целое число, для категории - это средняя цена всех " +
+            "дочерних товаров(включая товары подкатегорий). Если цена является не целым числом, " +
+            "округляется в меньшую сторону до целого числа. Если категория не содержит товаров цена " +
+            "равна null.", example = "300")
     public Long getPrice() {
         return price;
     }
