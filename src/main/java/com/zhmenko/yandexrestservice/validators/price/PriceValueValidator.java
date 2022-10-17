@@ -24,8 +24,7 @@ public class PriceValueValidator implements ConstraintValidator<PriceValue, Obje
         Long price = (Long) new BeanWrapperImpl(value)
                 .getPropertyValue(priceField);
 
-        if ((shopUnitType == ShopUnitType.CATEGORY && price != null)
-                || (shopUnitType == ShopUnitType.OFFER && price == null)) return false;
-        return true;
+        return (shopUnitType != ShopUnitType.CATEGORY || price == null)
+                && (shopUnitType != ShopUnitType.OFFER || price != null);
     }
 }
