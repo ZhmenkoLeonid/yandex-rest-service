@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "id": "233febf6-464e-4c09-ade9-517a7ccab668",
+      "name": "Товары 2",
+      "parentId": null,
+      "type": "CATEGORY",
+      "price": null,
+      "date": "2022-02-02T12:00:01.000Z"
+    },
+    {
+      "id": "fdf4a04c-c866-4246-83fd-b892aa9f3594",
+      "name": "Товары 4",
+      "parentId": null,
+      "type": "CATEGORY",
+      "price": null,
+      "date": "2022-02-03T11:59:59.000Z"
+    },
+    {
+      "id": "ec13d772-ab59-44b3-a330-e21c783d037d",
+      "name": "Товары 1",
+      "parentId": null,
+      "type": "CATEGORY",
+      "price": null,
+      "date": "2022-02-02T12:00:00.000Z"
+    },
+    {
+      "id": "e9acd57e-0af9-485b-ada9-8392bf6f977d",
+      "name": "Услуги 2",
+      "parentId": null,
+      "type": "CATEGORY",
+      "price": null,
+      "date": "2022-02-02T15:00:00.000Z"
+    },
+    {
+      "id": "b529bced-ee79-4c42-9b92-91901a48b02c",
+      "name": "Товары 3",
+      "parentId": null,
+      "type": "CATEGORY",
+      "price": null,
+      "date": "2022-02-03T12:00:00.000Z"
+    }
+  ]
+}

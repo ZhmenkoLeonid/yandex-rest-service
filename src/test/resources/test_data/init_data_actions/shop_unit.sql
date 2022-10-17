@@ -1,0 +1,14 @@
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('069cb8d7-bbdd-47d3-ad8f-82ef4c269df1', '2022-02-03 15:00:00.000000', 'Tovari', 237, 1, null);
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('a627ad46-2ca6-4e4e-9aeb-0b5a5db7d5ba', '2022-02-03 15:00:00.000000', 'Producti', 237, 1, '069cb8d7-bbdd-47d3-ad8f-82ef4c269df1');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('7b3ddd79-e127-457b-86a0-4e30676a56cf', '2022-02-03 15:00:00.000000', 'Myasnoe', 304, 1, 'a627ad46-2ca6-4e4e-9aeb-0b5a5db7d5ba');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('4479898a-fdce-4037-be0c-600f532dd5ef', '2022-02-03 15:00:00.000000', 'Molochnoe', 171, 1, 'a627ad46-2ca6-4e4e-9aeb-0b5a5db7d5ba');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('280538e0-f5b9-41c6-8dae-225bf8ca0f76', '2022-02-03 15:00:00.000000', 'Svinina', 350, 1, '7b3ddd79-e127-457b-86a0-4e30676a56cf');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('c205e325-3011-49ae-9226-a541f5c82f04', '2022-02-03 15:00:00.000000', 'Kurica', 287, 1, '7b3ddd79-e127-457b-86a0-4e30676a56cf');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('933cbdeb-ba25-4b78-967c-d1b849c95fd3', '2022-02-03 15:00:00.000000', 'Rebrishki 0,5kg', 400, 0, '280538e0-f5b9-41c6-8dae-225bf8ca0f76');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('0c2e5997-b9fa-4043-b7e0-2ff2fb85acd2', '2022-02-03 15:00:00.000000', 'Kurinie nozhki 1000g', 325, 0, 'c205e325-3011-49ae-9226-a541f5c82f04');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('57516315-56bd-43b6-a5ab-70a521db6275', '2022-02-03 15:00:00.000000', 'Otbivnaya 0,5kg', 300, 0, '280538e0-f5b9-41c6-8dae-225bf8ca0f76');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('8875591d-d31d-498e-862d-6dee9466e2aa', '2022-02-03 15:00:00.000000', 'Kurinoe file 800g', 250, 0, 'c205e325-3011-49ae-9226-a541f5c82f04');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('267d4f98-0315-4009-b777-b6dca3d48994', '2022-02-03 15:00:00.000000', 'Milka 5', 180, 0, '4479898a-fdce-4037-be0c-600f532dd5ef');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('81d97bb0-a8cf-4713-bd80-a58772d13b7a', '2022-02-03 15:00:00.000000', 'Milka special', 220, 0, '4479898a-fdce-4037-be0c-600f532dd5ef');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('647ff212-0fe3-4506-9c61-cf9ae1c4c895', '2022-02-02 12:00:00.000000', 'Milka 2,5', 100, 0, '4479898a-fdce-4037-be0c-600f532dd5ef');
+INSERT INTO public.shop_unit (id, date, name, price, type, parent_id) VALUES ('0a0a1977-8f15-46e4-9b1c-3edf4e202a2d', '2022-02-02 12:00:00.000000', 'Milka 4.0', 130, 0, '4479898a-fdce-4037-be0c-600f532dd5ef');

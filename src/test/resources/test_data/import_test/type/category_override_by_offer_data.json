@@ -1,0 +1,31 @@
+[
+  {
+    "items": [
+      {
+        "type": "CATEGORY",
+        "name": "Товары",
+        "id": "069cb8d7-bbdd-47d3-ad8f-82ef4c269df1",
+        "parentId": null
+      },
+      {
+        "type": "CATEGORY",
+        "name": "Мясное",
+        "id": "358d7a12-9c95-4431-95bb-d2ea554e6d66",
+        "parentId": null
+      }
+    ],
+    "updateDate": "2022-02-02T12:00:00.000Z"
+  },
+  {
+    "items": [
+      {
+        "type": "OFFER",
+        "name": "Колбаса",
+        "id": "069cb8d7-bbdd-47d3-ad8f-82ef4c269df1",
+        "parentId": "358d7a12-9c95-4431-95bb-d2ea554e6d66",
+        "price": 300
+      }
+    ],
+    "updateDate": "2022-02-02T15:00:00.000Z"
+  }
+]

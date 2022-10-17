@@ -1,0 +1,79 @@
+[
+  {
+    "items": [
+      {
+        "type": "CATEGORY",
+        "name": "Товары 5",
+        "id": "8cd21d27-458d-44cb-8241-3e2179986d39",
+        "parentId": null
+      }
+    ],
+    "updateDate": "2022-02-03T12:00:01.000Z"
+  },
+  {
+    "items": [
+      {
+        "type": "CATEGORY",
+        "name": "Товары 4",
+        "id": "fdf4a04c-c866-4246-83fd-b892aa9f3594",
+        "parentId": null
+      }
+    ],
+    "updateDate": "2022-02-03T11:59:59.000Z"
+  },
+  {
+    "items": [
+      {
+        "type": "CATEGORY",
+        "name": "Товары 3",
+        "id": "b529bced-ee79-4c42-9b92-91901a48b02c",
+        "parentId": null
+      }
+    ],
+    "updateDate": "2022-02-03T12:00:00.000Z"
+  },
+  {
+    "items": [
+      {
+        "type": "CATEGORY",
+        "name": "Товары 1",
+        "id": "ec13d772-ab59-44b3-a330-e21c783d037d",
+        "parentId": null
+      }
+    ],
+    "updateDate": "2022-02-02T12:00:00.000Z"
+  },
+  {
+    "items": [
+      {
+        "type": "CATEGORY",
+        "name": "Товары 2",
+        "id": "233febf6-464e-4c09-ade9-517a7ccab668",
+        "parentId": null
+      }
+    ],
+    "updateDate": "2022-02-02T12:00:01.000Z"
+  },
+  {
+    "items": [
+      {
+        "type": "CATEGORY",
+        "name": "Услуги 1",
+        "id": "c3a7d845-e1d2-49a6-9f37-c975a9ae0486",
+        "parentId": null
+      }
+    ],
+    "updateDate": "2022-02-02T11:59:59.000Z"
+  },
+  {
+    "items": [
+      {
+        "type": "CATEGORY",
+        "name": "Услуги 2",
+        "id": "e9acd57e-0af9-485b-ada9-8392bf6f977d",
+        "parentId": null
+      }
+    ],
+    "updateDate": "2022-02-02T15:00:00.000Z"
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "type": "CATEGORY",
+      "name": "Мясное",
+      "id": "7b3ddd79-e127-457b-86a0-4e30676a56cf",
+      "parentId": "a627ad46-2ca6-4e4e-9aeb-0b5a5db7d5ba"
+    },
+    {
+      "type": "OFFER",
+      "name": "Отбивная 0,5кг",
+      "id": "57516315-56bd-43b6-a5ab-70a521db6275",
+      "parentId": "7b3ddd79-e127-457b-86a0-4e30676a56cf",
+      "price": 300
+    },
+    {
+      "type": "OFFER",
+      "name": "Куриное филе 800г",
+      "id": "8875591d-d31d-498e-862d-6dee9466e2aa",
+      "parentId": "7b3ddd79-e127-457b-86a0-4e30676a56cf",
+      "price": 250
+    },
+    {
+      "type": "OFFER",
+      "name": "Milka 5",
+      "id": "267d4f98-0315-4009-b777-b6dca3d48994",
+      "parentId": "4479898a-fdce-4037-be0c-600f532dd5ef",
+      "price": 150
+    },
+    {
+      "type": "OFFER",
+      "name": "Milka special",
+      "id": "81d97bb0-a8cf-4713-bd80-a58772d13b7a",
+      "parentId": "4479898a-fdce-4037-be0c-600f532dd5ef",
+      "price": 170
+    }
+  ],
+  "updateDate": "2022-02-02T15:00:00.000Z"
+}

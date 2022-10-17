@@ -1,0 +1,59 @@
+{
+  "items": [
+    {
+      "type": "CATEGORY",
+      "name": "Свинина",
+      "id": "280538e0-f5b9-41c6-8dae-225bf8ca0f76",
+      "parentId": "7b3ddd79-e127-457b-86a0-4e30676a56cf"
+    },
+    {
+      "type": "CATEGORY",
+      "name": "Курица",
+      "id": "c205e325-3011-49ae-9226-a541f5c82f04",
+      "parentId": "7b3ddd79-e127-457b-86a0-4e30676a56cf"
+    },
+    {
+      "type": "OFFER",
+      "name": "Отбивная 0,5кг",
+      "id": "57516315-56bd-43b6-a5ab-70a521db6275",
+      "parentId": "280538e0-f5b9-41c6-8dae-225bf8ca0f76",
+      "price": 300
+    },
+    {
+      "type": "OFFER",
+      "name": "Рёбрышки 0,5кг",
+      "id": "933cbdeb-ba25-4b78-967c-d1b849c95fd3",
+      "parentId": "280538e0-f5b9-41c6-8dae-225bf8ca0f76",
+      "price": 400
+    },
+    {
+      "type": "OFFER",
+      "name": "Куриное филе 800г",
+      "id": "8875591d-d31d-498e-862d-6dee9466e2aa",
+      "parentId": "c205e325-3011-49ae-9226-a541f5c82f04",
+      "price": 250
+    },
+    {
+      "type": "OFFER",
+      "name": "Куриные ножки 1000г",
+      "id": "0c2e5997-b9fa-4043-b7e0-2ff2fb85acd2",
+      "parentId": "c205e325-3011-49ae-9226-a541f5c82f04",
+      "price": 325
+    },
+    {
+      "type": "OFFER",
+      "name": "Milka 5",
+      "id": "267d4f98-0315-4009-b777-b6dca3d48994",
+      "parentId": "4479898a-fdce-4037-be0c-600f532dd5ef",
+      "price": 180
+    },
+    {
+      "type": "OFFER",
+      "name": "Milka special",
+      "id": "81d97bb0-a8cf-4713-bd80-a58772d13b7a",
+      "parentId": "4479898a-fdce-4037-be0c-600f532dd5ef",
+      "price": 220
+    }
+  ],
+  "updateDate": "2022-02-03T15:00:00.000Z"
+}

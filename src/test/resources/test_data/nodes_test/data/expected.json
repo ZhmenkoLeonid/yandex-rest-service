@@ -1,0 +1,132 @@
+{
+  "id": "069cb8d7-bbdd-47d3-ad8f-82ef4c269df1",
+  "name": "Tovari",
+  "date": "2022-02-03T15:00:00.000Z",
+  "parentId": null,
+  "price": 237,
+  "type": "CATEGORY",
+  "children": [
+    {
+      "id": "a627ad46-2ca6-4e4e-9aeb-0b5a5db7d5ba",
+      "name": "Producti",
+      "date": "2022-02-03T15:00:00.000Z",
+      "parentId": "069cb8d7-bbdd-47d3-ad8f-82ef4c269df1",
+      "price": 237,
+      "type": "CATEGORY",
+      "children": [
+        {
+          "id": "7b3ddd79-e127-457b-86a0-4e30676a56cf",
+          "name": "Myasnoe",
+          "date": "2022-02-03T15:00:00.000Z",
+          "parentId": "a627ad46-2ca6-4e4e-9aeb-0b5a5db7d5ba",
+          "price": 304,
+          "type": "CATEGORY",
+          "children": [
+            {
+              "id": "280538e0-f5b9-41c6-8dae-225bf8ca0f76",
+              "name": "Svinina",
+              "date": "2022-02-03T15:00:00.000Z",
+              "parentId": "7b3ddd79-e127-457b-86a0-4e30676a56cf",
+              "price": 350,
+              "type": "CATEGORY",
+              "children": [
+                {
+                  "id": "933cbdeb-ba25-4b78-967c-d1b849c95fd3",
+                  "name": "Rebrishki 0,5kg",
+                  "date": "2022-02-03T15:00:00.000Z",
+                  "parentId": "280538e0-f5b9-41c6-8dae-225bf8ca0f76",
+                  "price": 400,
+                  "type": "OFFER",
+                  "children": null
+                },
+                {
+                  "id": "57516315-56bd-43b6-a5ab-70a521db6275",
+                  "name": "Otbivnaya 0,5kg",
+                  "date": "2022-02-03T15:00:00.000Z",
+                  "parentId": "280538e0-f5b9-41c6-8dae-225bf8ca0f76",
+                  "price": 300,
+                  "type": "OFFER",
+                  "children": null
+                }
+              ]
+            },
+            {
+              "id": "c205e325-3011-49ae-9226-a541f5c82f04",
+              "name": "Kurica",
+              "date": "2022-02-03T15:00:00.000Z",
+              "parentId": "7b3ddd79-e127-457b-86a0-4e30676a56cf",
+              "price": 287,
+              "type": "CATEGORY",
+              "children": [
+                {
+                  "id": "0c2e5997-b9fa-4043-b7e0-2ff2fb85acd2",
+                  "name": "Kurinie nozhki 1000g",
+                  "date": "2022-02-03T15:00:00.000Z",
+                  "parentId": "c205e325-3011-49ae-9226-a541f5c82f04",
+                  "price": 325,
+                  "type": "OFFER",
+                  "children": null
+                },
+                {
+                  "id": "8875591d-d31d-498e-862d-6dee9466e2aa",
+                  "name": "Kurinoe file 800g",
+                  "date": "2022-02-03T15:00:00.000Z",
+                  "parentId": "c205e325-3011-49ae-9226-a541f5c82f04",
+                  "price": 250,
+                  "type": "OFFER",
+                  "children": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4479898a-fdce-4037-be0c-600f532dd5ef",
+          "name": "Molochnoe",
+          "date": "2022-02-03T15:00:00.000Z",
+          "parentId": "a627ad46-2ca6-4e4e-9aeb-0b5a5db7d5ba",
+          "price": 171,
+          "type": "CATEGORY",
+          "children": [
+            {
+              "id": "267d4f98-0315-4009-b777-b6dca3d48994",
+              "name": "Milka 5",
+              "date": "2022-02-03T15:00:00.000Z",
+              "parentId": "4479898a-fdce-4037-be0c-600f532dd5ef",
+              "price": 180,
+              "type": "OFFER",
+              "children": null
+            },
+            {
+              "id": "81d97bb0-a8cf-4713-bd80-a58772d13b7a",
+              "name": "Milka special",
+              "date": "2022-02-03T15:00:00.000Z",
+              "parentId": "4479898a-fdce-4037-be0c-600f532dd5ef",
+              "price": 220,
+              "type": "OFFER",
+              "children": null
+            },
+            {
+              "id": "647ff212-0fe3-4506-9c61-cf9ae1c4c895",
+              "name": "Milka 2,5",
+              "date": "2022-02-02T12:00:00.000Z",
+              "parentId": "4479898a-fdce-4037-be0c-600f532dd5ef",
+              "price": 100,
+              "type": "OFFER",
+              "children": null
+            },
+            {
+              "id": "0a0a1977-8f15-46e4-9b1c-3edf4e202a2d",
+              "name": "Milka 4.0",
+              "date": "2022-02-02T12:00:00.000Z",
+              "parentId": "4479898a-fdce-4037-be0c-600f532dd5ef",
+              "price": 130,
+              "type": "OFFER",
+              "children": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
